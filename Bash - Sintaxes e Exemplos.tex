@@ -1,0 +1,302 @@
+\documentclass[aspectratio=1610]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usetheme{PaloAlto}
+\usecolortheme{crane}
+\usepackage{times}
+%\usepackage{serif}
+
+% Persquisar este:
+% \usefonttheme[onlymath]{mathserif}
+
+% \title{}
+% \author{Hélio Giroto}
+
+% Tira os símbolos de navegaçao no rodapé dos slides pdf:
+\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+
+\section [Capa]{}
+\begin{frame}
+
+\Huge \textbf{BASH} \vspace{0.5cm}
+
+\large
+\textbf{Guia de Sintaxes e Exemplos}
+
+(Orientados à Programação)\vspace{1.2cm}
+
+
+\begin{flushright}
+	\scriptsize{\textit{Autor: Hélio Giroto}}
+\end{flushright}
+
+  
+\end{frame}
+
+
+\section [Bash e etc...]{}
+\begin{frame}
+  \frametitle{Quotings}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Comentários}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Comandos compostos}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Expansões}
+  \framesubtitle{(De Strings e Aritméticas)}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Substituições}
+  \framesubtitle{(De comandos e de processos)}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Padrões}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Redirecionamentos}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{EOF}
+  \framesubtitle{Pg 33 ?}
+
+\end{frame}
+
+
+\section [Variáveis]{}
+\begin{frame}
+  \frametitle{Variáveis}
+  \framesubtitle{}
+  
+  \begin{block}{Atribuição:}
+	\begin{itemize}
+	\item {\textit{Nomes de variáveis:}} 
+		\begin{itemize}	
+		\item[-]{Se aceita alfanuméricos e underlines (\_). }
+		\item[-]{Diferencia maiúsculas de minúsculas. }
+		\item[-]{Não pode começar com número.}
+		\end{itemize}
+	\item {\textit{Exemplos:}} \\
+  		var=Linux \\
+  		Var="FreeBSD" \\
+  		var\_2="Bom dia para todos!" \\
+  		texto="João\ \ \ \ \ \ 350,00"\\
+  		valor=38 \\
+	\end{itemize}
+  \end{block}
+  
+  
+  \begin{block}{Acesso:}
+	  \begin{itemize}
+	  	\item{\textit{É chamada com o símbolo \$dolar - Ex:}}\\
+	  	echo \$var \\
+	  	echo "\$texto" - *\scriptsize {(Se coloca áspas para imprimir os espaços [Ver acima])}
+	  \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+\section [READ]{}
+\begin{frame}
+  \frametitle{Comando READ}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\section [Parâmetros]{}
+\begin{frame}
+  \frametitle{Parâmetros e o comando SHIFT}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\section [Arrays]{}
+\begin{frame}
+  \frametitle{Arrays}
+  \framesubtitle{}
+
+\begin{block}{}
+	\# Declarar um array:\\
+	cidades=(Brasilia Manaus "São Paulo" "Rio de Janeiro" Cuiabá)
+\end{block}
+
+\begin{block}{}
+	\# Exibir os elementos do array:\\
+	echo \$\{cidades[0]\}\ \ \ \ \# Saída: Brasilia.\\
+	echo \$\{cidades[*]\}\ \ \ \ \# Exibe \textbf{todos} os elementos do array.\\
+	echo \$\{cidades[@]\}\ \  \# mesmo efeito acima...\\
+	echo \$\{#cidades[*]\}\ \ \ \ \# Mostra a \textbf{quantidade} de elementos do array\\
+\end{block}
+
+\begin{block}{}
+	\# Eliminar um elemento do array:\\
+	unset cidades[0]\ \ \ \# Elimina o elemento 0 do array.\\
+	unset cidades \ \ \ \ \ \#\ Elimina o array completo
+\end{block}
+
+* \textit{Ver como usar um array com o \textbf{comando FOR}.}
+
+
+\end{frame}
+
+
+\section [IF]{}
+\begin{frame}
+  \frametitle{Comando IF} \vspace{-0.3cm}     % comente esse vspace e veja a diferença de como o espaço aumenta na primeira linha! 
+  \framesubtitle{}
+\begin{columns}
+% ver tb sobre o minipage: http://www.alessandroduarte.com.br/?page_id=602  ou https://texblog.org/2007/08/01/placing-figurestables-side-by-side-minipage/
+% ou mesmo columns em:  https://tex.stackexchange.com/questions/32931/multiple-columns-with-images-and-wrapped-text-in-beamer   ou   https://www.overleaf.com/learn/latex/Multiple_columns
+% Posição:   https://www.overleaf.com/learn/latex/Positioning_of_Figures
+    \begin{column}{0.45\textwidth}   % Se usamos 0.5 aqui ao lado, as duas colunas ficam extremamente juntas (sem separação).
+       \begin{block}{}
+	      if [[ "\$var" == "algo" ]]\\
+	      then\\
+		      \textit{\ \ \ comandos...}\\
+	      fi\\
+        \end{block}
+
+        \begin{block}{}
+	      if [[ \$num -eq 0 ]]\\
+	      then\\
+		      \ \ \ echo "Nro. é zero."\\
+	      else\\
+		      \ \ \ echo "Nro. diferente de zero."\\
+	      fi\\
+        \end{block}
+        
+        \begin{block}{}
+	      if [[ \$opcao -gt 5 ]]\\
+	      then\\
+		       \ \ \ echo "Opcao MAIOR QUE 5"\\
+	      fi\\
+        \end{block}
+    \end{column}
+        
+\begin{column}{0.45\textwidth}
+    Segunda coluna
+        \begin{block}{}
+	      testar exemplos - AND e OR\\
+	      mais ex.: com test... com arquivos... 	\\
+	      acima: dividir em duas colunas de blocos...\\
+        \end{block}
+\end{column}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Expressões Condicionais}
+  \framesubtitle{}
+      pg. 90-92
+\end{frame}
+
+
+\section [Operadores]{}
+\begin{frame}
+  \frametitle{Operadores }
+  \framesubtitle{(De valor, aritméticos, relacionais, lógicos)}
+
+\end{frame}
+
+
+\section [CASE]{}
+\begin{frame}
+  \frametitle{Comando CASE}
+  \framesubtitle{}
+
+	\begin{block}{}
+			
+	\end{block}
+
+\end{frame}
+
+
+\section [WHILE]{}
+\begin{frame}
+  \frametitle{Comando WHILE}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\section [UNTIL]{}
+\begin{frame}
+  \frametitle{Comando UNTIL}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\section [FOR]{}
+\begin{frame}
+  \frametitle{Comando FOR}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\section [SELECT]{}
+\begin{frame}
+  \frametitle{Comando SELECT}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\section [Funções]{}
+\begin{frame}
+  \frametitle{Funções}
+  \framesubtitle{}
+
+\end{frame}
+
+
+\section [Considerações]{}
+\begin{frame}
+  \frametitle{Considerações Finais}
+  \maketitle
+
+\end{frame}
+
+
+\end{document}
+
+% VER TB:
+% https://tex.stackexchange.com/questions/167714/writing-source-code-in-latex-as-text
