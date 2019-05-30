@@ -1,0 +1,100 @@
+PARA IMPRIMIR - ESCREVER EM CARACTERES HEBRAICOS NO LATEX:
+
+INSTALAR PACOTES NO LATEX UBUNTU:
+
+	/usr/share/texmf/tex/latex$ sudo cp -r ~/Downloads/PASTA_DESCOMPACTADA_PKG .
+Ex.:
+	/usr/share/texmf/tex/latex$ sudo cp -r ~/Downloads/expex .
+	/usr/share/texmf/tex/latex$ sudo cp -r ~/Downloads/culmus .
+
+Ou seja:
+cd /usr/share/texmf/tex/latex
+sudo cp -r ~/Downloads/expex .
+
+E AO DEPOIS DISSO:
+
+sudo texhash
+
+========================================
+
+instalar fontes culmus:
+https://packages.debian.org/sid/all/culmus-fancy/download
+
+========================================
+ 
+
+1) Pacotes:
+
+ 1884  sudo apt install texlive-xetex 
+ 1885  sudo apt-get install culmus
+ 1949  sudo apt-get install texlive-xetex
+ 1953  sudo apt-get install texlive-lang-other
+ 1954  sudo apt-get install culmus xfonts-efont-unicode xfonts-efont-unicode-ib xfonts-intl-european msttcorefonts
+ 1959  sudo apt install texlive-latex-base
+ 1960  sudo apt install texlive-lang-all
+
+
+2) Baixar neste diretório abaixo:
+
+	$ /usr/share/texlive/texmf-dist/tex/latex/base$ sudo wget http://www.corelab.ntua.gr/~philaris/grlatex/examples/bidi.sty
+
+
+3) COMPILAR SOMENTE EM XELATEX.
+
+[Instalar culmus.sty: $ sudo cp ~/Área\ de\ Trabalho/culmus.sty .]
+
+EXEMPLO DE ARQUIVO LATEX:
+
+\documentclass{minimal} 
+\usepackage{polyglossia}
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\usepackage{fontspec}
+\setmainfont{Frank Ruehl CLM}
+\setmonofont{Miriam Mono CLM}
+\setsansfont{Simple CLM}
+
+% Use the following if you only want to change the font for Hebrew
+%\newfontfamily\hebrewfont[Script=Hebrew]{David CLM}
+%\newfontfamily\hebrewfonttt[Script=Hebrew]{Miriam Mono CLM}
+%\newfontfamily\hebrewfontsf[Script=Hebrew]{Simple CLM}
+
+% FONTE: https://www.guyrutenberg.com/2015/03/20/hebrew-with-xetex-example/
+
+\makeatletter
+\makeatother
+\usepackage{bidi}
+\begin{document}
+טקסט רגיל
+\textbf{טקסט מודגש}
+\textit{טקסט נטוי}
+\textit{\textbf{טקסט מודגש ונטוי}}
+בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ:
+
+\begin{english}
+In the beginning God created the heaven and the earth.
+\end{english}
+
+\sffamily
+טקסט רגיל
+\textbf{טקסט מודגש}
+\textit{טקסט נטוי}
+\textit{\textbf{טקסט מודגש ונטוי}}
+בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ:
+
+\begin{english}
+In the beginning God created the heaven and the earth.
+\end{english}
+
+
+\ttfamily
+טקסט רגיל
+\textbf{טקסט מודגש}
+\textit{טקסט נטוי}
+\textit{\textbf{טקסט מודגש ונטוי}}
+בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ:
+
+\begin{english}
+In the beginning God created the heaven and the earth.
+\end{english}
+\end{document}
